@@ -16,7 +16,7 @@ import java.util.Set;
 @Table(name = "users")
 public class User implements UserDetails{
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "users_roles",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id")
@@ -35,6 +35,7 @@ public class User implements UserDetails{
 
     @NotEmpty(message = "Email should not be empty")
     @Email(message = "Email should be valid")
+    @Column(unique = true)
     private String email;
 
     @Column(name = "password")
@@ -57,6 +58,10 @@ public class User implements UserDetails{
     public String getEmail() { return email; }
 
     public void setEmail(String email) { this.email = email; }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
