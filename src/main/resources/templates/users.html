@@ -22,11 +22,11 @@
         <td th:text="${user.email}"></td>
 
         <td>
-            <a th:href="@{/users/edit(id=${user.id})}">Edit</a>
+            <a th:href="@{/admin/edit(id=${user.id})}">Edit</a>
         </td>
 
         <td>
-            <form th:action="@{/users/delete(id=${user.id})}" method="post">
+            <form th:action="@{/admin/delete(id=${user.id})}" method="post">
                 <input type="submit" value="Delete"/>
             </form>
         </td>
@@ -35,7 +35,7 @@
 
 <br>
 
-<a href="/users/new">Create new user</a>
+<a href="/admin/new">Create new user</a>
 
 </body>
 </html>

@@ -8,7 +8,7 @@
 <h2>Edit user</h2>
 
 <form th:method="post"
-      th:action="@{/users/update}"
+      th:action="@{/admin/update}"
       th:object="${user}">
 
     <input type="hidden" th:field="*{id}"/>
@@ -26,6 +26,20 @@
             th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
 
     <br><br>
+
+
+    Password:
+    <input type="password" th:field="*{password}"/>
+
+    <br><br>
+
+    Roles:
+    <select th:field="*{roles}">
+        <option th:each="role : ${roles}"
+                th:value="${role.id}"
+                th:text="${role.name}">
+        </option>
+    </select>
 
     <input type="submit" value="Update user"/>
 
