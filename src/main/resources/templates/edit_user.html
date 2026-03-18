@@ -34,7 +34,7 @@
     <br><br>
 
     Roles:
-    <select th:field="*{roles}">
+    <select multiple th:field="*{roles}">
         <option th:each="role : ${roles}"
                 th:value="${role.id}"
                 th:text="${role.name}">
